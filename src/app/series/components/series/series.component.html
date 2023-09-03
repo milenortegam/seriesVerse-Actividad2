@@ -1,0 +1,9 @@
+<div *ngFor="let serie of series">
+    <h2>{{ serie.name }}</h2>
+    <h4>{{ serie.overview }}</h4>
+    <p>Porcentaje de aprobación: {{ serie.vote_average}}</p>
+    <p>Id Serie: {{ serie.id}}</p>
+
+    <button (click)="verDetalle(serie.id)">Ver detalle</button>
+    <hr>
+</div>

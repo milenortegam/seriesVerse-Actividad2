@@ -1,0 +1,47 @@
+<div *ngIf="serie">
+    <div class="serie-details">
+        <img src="{{'https://image.tmdb.org/t/p/original/' + serie.poster_path }}" alt="{{ serie.name }}"
+            class="poster-image">
+        <div class="serie-info">
+            <h2>{{ serie.name }}</h2>
+            <p class="tagline">{{ serie.tagline }}</p>
+            <p class="overview">{{ serie.overview }}</p>
+            <div class="genres">
+                <strong>Genres: </strong>
+                <span *ngFor="let genre of serie.genres">{{ genre.name }}</span>
+            </div>
+            <p><strong>First Air Date: </strong> {{ serie.first_air_date }}</p>
+            <p><strong>Number of episodes: </strong> {{ serie.number_of_episodes }} minutes</p>
+            <p><strong>Rating: </strong> {{ serie.vote_average }}</p>
+            <p><strong>Production Companies: </strong></p>
+            <ul class="production-companies">
+                <li *ngFor="let company of serie.production_companies">
+                    <img src="{{'https://image.tmdb.org/t/p/original/' + company.logo_path}}" alt="{{ company.name }}"
+                        class="company-logo">
+                </li>
+            </ul>
+            <p><strong>Homepage: </strong> <a [href]="serie.homepage" target="_blank">{{ serie.name }}
+                    Website</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="seriesSimilares.length > 0">
+    <h4>series similares</h4>
+    <app-series-similares [series]="seriesSimilares"></app-series-similares>
+</div>
+
+<div>
+    <h4>Imagenes</h4>
+    <ngb-carousel #carouselImg [interval]="10000" class="my-carousel">
+        <ng-template ngbSlide *ngFor="let img of backdrops; index as i">
+            <div class="carousel-caption">
+            </div>
+            <div class="picsum-img-wrapper">
+                <img [src]="'https://image.tmdb.org/t/p/original/' + img.file_path"
+                    [alt]="'Slide ' + (i + 1) + ' description'" />
+            </div>
+        </ng-template>
+    </ngb-carousel>
+</div>

@@ -1,0 +1,9 @@
+<ngb-carousel [interval]="0" [showNavigationArrows]="false">
+    <ng-container *ngFor="let grupoSeries of seriesGrupos">
+        <ng-template ngbSlide>
+            <div class="serie-container">
+                <app-card-serie *ngFor="let serie of grupoSeries" [serie]="serie"></app-card-serie>
+            </div>
+        </ng-template>
+    </ng-container>
+</ngb-carousel>
